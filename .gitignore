@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/After/MartenDbSample/MartenDbSample/bin/Debug/net6.0
+/src/After/MartenDbSample/MartenDbSample/obj
+/src/After/MartenDbSample/.vs
+/src/Before/MartenDbSample/.vs
+/src/Before/MartenDbSample/MartenDbSample/bin/Debug/net6.0
+/src/Before/MartenDbSample/MartenDbSample/obj
