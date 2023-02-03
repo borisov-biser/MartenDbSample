@@ -2,7 +2,5 @@
 
 namespace MartenDbSample.WeatherForecast.WeatherForecastAggregate.Events
 {
-    public class WeatherForecastMonitoringStopped : IEvent
-    {
-    }
+    public record WeatherForecastMonitoringStopped(string Description, DateTime Date) : IEvent;
 }
