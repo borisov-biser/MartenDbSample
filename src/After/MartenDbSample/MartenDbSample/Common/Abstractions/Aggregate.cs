@@ -2,12 +2,16 @@
 {
     public abstract class Aggregate : IAggregate
     {
-        public Guid Id { get; }
-        public long Version { get; }
+        public Guid Id { get; init; }
+        public long Version { get; protected set; }
 
         private readonly List<IEvent> _uncommittedEvents = new List<IEvent>();
 
-        public Aggregate(Guid streamId)
+        protected Aggregate()
+        {
+        }
+
+        protected Aggregate(Guid streamId)
         {
             Id = streamId;
         }

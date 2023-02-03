@@ -19,8 +19,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();
 
+const string _databaseSchemaName = "weatherforecast_eventstore";
+string _connectionString = builder.Configuration.GetConnectionString("Postgre");
+
 //TODO: Implementation
-// builder.Configuration.GetConnectionString("Postgre");
 //Add MartenDb Configuration
 
 

@@ -16,9 +16,16 @@ namespace MartenDbSample.WeatherForecast.WeatherForecastAggregate
 
         public WeatherForecastSummary Summary { get; set; } = WeatherForecastSummary.None;
 
+        private WeatherForecast() : base()
+        {
+        }
+
         private WeatherForecast(Guid streamId) : base(streamId)
         {
         }
+
+        //TODO::Implement
+
 
     }
 }

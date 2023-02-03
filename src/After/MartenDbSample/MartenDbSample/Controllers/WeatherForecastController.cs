@@ -49,17 +49,17 @@ namespace MartenDbSample.Controllers
         }
 
         [HttpGet(Name="Get")]
-        public async Task<ActionResult<WeatherForecastDto>> Get(WeatherForecastRequest request, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<WeatherForecastDto>> Get(Guid id, CancellationToken cancellationToken = default)
         {
-            var result = await _mediatR.Send(new WeatherForecastQuery.Query(request), cancellationToken);
+            var result = await _mediatR.Send(new WeatherForecastQuery.Query(new WeatherForecastRequest(id)), cancellationToken);
             return result.IsSuccess ? Ok(result.Value.ToDto()) : NotFound();
         }
 
 
         [HttpGet( "Projection", Name ="Projection")]
-        public async Task<ActionResult<WeatherForecastDto>> GetProjection(WeatherForecastRequest request, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<WeatherForecastDto>> GetProjection(Guid id, CancellationToken cancellationToken = default)
         {
-            var result = await _mediatR.Send(new WeatherForecastSelfAggregateProjection.Query(request), cancellationToken);
+            var result = await _mediatR.Send(new WeatherForecastSelfAggregateProjection.Query(new WeatherForecastRequest(id)), cancellationToken);
             return result.IsSuccess ? Ok(result.Value.ToDto()) : NotFound();
         }
     }
