@@ -18,7 +18,7 @@ namespace MartenDbSample.WeatherForecast.Requests.Extensions
             return (WeatherForecastSummaryDto)Enum.Parse(typeof(WeatherForecastSummaryDto), weatherForecastSummary.ToString());
         }
 
-        public static WeatherForecastSummary ToDto(this WeatherForecastSummaryDto weatherForecastSummary)
+        public static WeatherForecastSummary ToDomain(this WeatherForecastSummaryDto weatherForecastSummary)
         {
             return (WeatherForecastSummary)Enum.Parse(typeof(WeatherForecastSummary), weatherForecastSummary.ToString());
         }

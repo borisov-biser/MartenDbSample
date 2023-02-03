@@ -1,6 +1,7 @@
 ﻿using Ardalis.Result;
 using MartenDbSample.WeatherForecast.Repository;
 using MartenDbSample.WeatherForecast.Requests.ModelsDto;
+using MartenDbSample.WeatherForecast.WeatherForecastAggregate.Events;
 using MediatR;
 
 namespace MartenDbSample.WeatherForecast.Requests.Commands
@@ -24,8 +25,7 @@ namespace MartenDbSample.WeatherForecast.Requests.Commands
                 if (aggregate == null)
                     return Result<WeatherForecastAggregate.WeatherForecast>.Error($"Aggregate with Id: {command.Request.Id} doesn't exists.");
 
-                //TODO: Implement Aggregate
-                //aggregate.UpdateForecast(new WeatherForecastTemeperatureUpdated());
+                aggregate.WeatherForecastMonitoringStopped(command.Request.Description, command.Request.Date);
 
                 await _repository.UpdateAsync(aggregate, cancellationToken);
 

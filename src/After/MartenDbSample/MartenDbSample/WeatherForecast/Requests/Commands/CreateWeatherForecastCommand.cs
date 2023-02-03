@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using MartenDbSample.WeatherForecast.Repository;
+using MartenDbSample.WeatherForecast.Requests.Extensions;
 using MartenDbSample.WeatherForecast.Requests.ModelsDto;
 using MediatR;
 
@@ -22,13 +23,15 @@ namespace MartenDbSample.WeatherForecast.Requests.Commands
             {
 
                // //TODO: Implement Aggregate
-               //// aggregate. WeatherForecastCreated();
+               var aggregate = WeatherForecastAggregate.WeatherForecast.CreateWeatherForecast(
+                   command.Request.TemperatureC,
+                   command.Request.Summary.ToDomain(),
+                   command.Request.Description, 
+                   command.Request.Date);
 
-               //await _repository.CreateAsync(aggregate, cancellationToken);
+               await _repository.CreateAsync(aggregate, cancellationToken);
 
-               //return Result<WeatherForecastDto>.Success(aggregate.ToDto());
-
-               return Result<WeatherForecastAggregate.WeatherForecast>.Error();
+               return Result<WeatherForecastAggregate.WeatherForecast>.Success(aggregate);
             }
         }
     }
