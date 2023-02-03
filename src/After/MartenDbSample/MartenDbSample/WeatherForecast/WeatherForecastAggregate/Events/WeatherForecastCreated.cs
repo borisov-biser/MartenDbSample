@@ -1,8 +1,10 @@
 ﻿using MartenDbSample.Common.Abstractions;
+using MartenDbSample.WeatherForecast.WeatherForecastAggregate.Models;
 
 namespace MartenDbSample.WeatherForecast.WeatherForecastAggregate.Events
 {
-    public class WeatherForecastCreated : IEvent
-    {
-    }
+    public record WeatherForecastCreated(int TemperatureC,
+                                         WeatherForecastSummary Summary,
+                                         string Description,
+                                         DateTime Date) : IEvent;
 }
